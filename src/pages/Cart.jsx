@@ -1,9 +1,10 @@
 import Cartpage from "../components/Cartpage";
 
-export default function Cart(){
+export default function Cart({ cart, setCart }){
     return(
         <>
-        <Cartpage/>
+        <Cartpage cart={cart} setCart={setCart}/>
+
         </>
     )
 }

@@ -10,19 +10,21 @@ import Login from "../pages/Login"
 import Cart from "../pages/Cart"
 import Addnewproduct from "./Addnewproduct"
 import Singleproduct from "./Singleproduct"
-
+import {useState} from "react"
 export default function Router(){
+    const[cart,setCart]=useState([])
+console.log(cart)
     return(
     <BrowserRouter>
     <Routes>
-        <Route path="/" element={<Layout><Home/></Layout>}/>
-        <Route path="/About" element={<Layout><About/></Layout>}/>
+        <Route path="/" element={<Layout cart={cart} setCart={setCart}><Home cart={cart} setCart={setCart}/></Layout>}/>
+        <Route path="/about" element={<Layout><About/></Layout>}/>
         <Route path="*" element={<Layout><Notfound/></Layout>}/>
-        <Route path="Signup" element={<Layout><Signup/></Layout>}/>
-        <Route path="Login" element={<Layout><Login/></Layout>}/>
-        <Route path="Cart" element={<Layout><Cart/></Layout>}/>
-        <Route path="Addnewproduct" element={<Layout><Addnewproduct/></Layout>}/>
-        <Route path="Singleproduct" element={<Layout><Singleproduct/></Layout>}/>
+        <Route path="signup" element={<Layout><Signup/></Layout>}/>
+        <Route path="login" element={<Layout><Login/></Layout>}/>
+        <Route path="/cart" element={<Layout><Cart  cart={cart} setCart={setCart}/></Layout>}/>
+        <Route path="/addnewproduct" element={<Layout><Addnewproduct/></Layout>}/>
+        <Route path="/singleproduct" element={<Layout><Singleproduct/></Layout>}/>
     </Routes>
     </BrowserRouter>
     )
