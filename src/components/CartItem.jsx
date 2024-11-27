@@ -34,7 +34,7 @@ const CartItem = ({ imageSrc, name, price, cartCopy, setCartCopy }) => {
             +
           </button>
         </div>
-        <p className="text-lg font-semibold">{price}</p>
+        <p className="text-lg font-semibold">{cartCopy && cartCopy.filter(item=>item.price===price).reduce((acc,curr)=>acc+curr.price,0)}</p>
       </div>
     </div>
   );

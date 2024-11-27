@@ -26,7 +26,7 @@ export default function Featuredlist({ name, price, img, cart, setCart }) {
 
       <div className="text-justify mt-[10px]">
         <p>{name}</p>
-        <p>Ksh.{price.toLocalstring()}</p>
+        <p>Ksh.{price.toLocaleString()}</p>
       </div>
     </div>
   );
