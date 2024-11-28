@@ -9,11 +9,18 @@ const CartItem = ({ imageSrc, name, price, cartCopy, setCartCopy }) => {
     }
     if(action==="decrement"){
       const copy=[...cartCopy];
-      const productIndex=copy.indexOf(product);
+      let productIndex=copy.indexOf(product);
+      copy.find((item,index)=>{
+        if(item.name===name){
+          productIndex=index
+        }
+      })
+
       copy.splice(productIndex,1);
       setCartCopy (copy);
     }
   }
+  
 
   return (
     <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-4">

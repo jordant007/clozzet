@@ -4,17 +4,24 @@ import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 
 export default function Cartpage({ cart, setCart }) {
-  const [cartCopy, setCartCopy] = useState([]);
-
-  useEffect(() => {
-    const copy = [...cart];
-    setCartCopy(copy);
-  }, [cart]);
+  const [cartCopy, setCartCopy] = useState(null);
 
   useEffect(()=>{
-    localStorage.setItem("cartCopy",JSON.stringify(cartCopy))
+    const cartCopyItem=JSON.parse(localStorage.getItem("cartCopy"));
+    const CartItem=JSON.parse(localStorage.getItem("cart"))
+    if(cartCopyItem){
+        setCartCopy(cartCopyItem)
+    }else{setCartCopy(CartItem)}
+},[])
+  // useEffect(() => {
+  //   const copy = [...cart];
+  //   setCartCopy(copy);
+  // }, [cart]);
+
+  useEffect(()=>{
+    cartCopy && localStorage.setItem("cartCopy",JSON.stringify(cartCopy))
   },[cartCopy])
-  
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
       {cart && cart.length === 0 ? (
