@@ -18,6 +18,7 @@ return(
         </ul>
       </div>
 
+
       <div>
         <ul className="flex gap-6 items-center">
         <Link to="/Cart"><FiShoppingCart /></Link>

@@ -18,8 +18,9 @@ export default function Featuredlist({ name, price, img, cart, setCart }) {
           <button
             class="bg-[#45C9A1] text-white px-[70px] py-2 rounded-lg"
             onClick={(e) => addToCart(e, { name, price, img })}
-          >
-            Add to Cart
+            style={{background:cart.find((item) =>item.name===name)?"gray":"#45C9A1"}}
+          >{cart.find(item=>item.name===name)?"Added to cart":"Add to Cart"}
+          
           </button>
         </div>
       </div>

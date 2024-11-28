@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 
@@ -8,13 +9,31 @@ export default function Cartpage({ cart, setCart }) {
   useEffect(() => {
     const copy = [...cart];
     setCartCopy(copy);
-  }, []);
+  }, [cart]);
 
+  useEffect(()=>{
+    localStorage.setItem("cartCopy",JSON.stringify(cartCopy))
+  },[cartCopy])
+  
   return (
-    <div className="flex">
-      <div className="max-w-4xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg">
-        {cart &&
-          cart.map((item) => (
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
+      {cart && cart.length === 0 ? (
+        <div className="flex flex-col items-center justify-center space-y-6 mt-20 p-10 bg-white rounded-lg shadow-lg text-center">
+          <FaShoppingCart className="w-24 h-24 text-gray-300" />
+          <h2 className="text-2xl font-semibold text-gray-700">
+            Your cart is empty
+          </h2>
+          
+          <button 
+            onClick={() => {}}
+            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      ) : (
+        <div className="max-w-4xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg w-full">
+          {cart.map((item) => (
             <CartItem
               key={item.name}
               name={item.name}
@@ -25,8 +44,9 @@ export default function Cartpage({ cart, setCart }) {
               cartCopy={cartCopy}
             />
           ))}
-      </div>
-      <CartSummary cartItems={cartCopy} />
+        </div>
+      )}
+      {cart && cart.length > 0 && <CartSummary cartItems={cartCopy} />}
     </div>
   );
 }
