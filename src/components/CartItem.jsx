@@ -7,6 +7,12 @@ const CartItem = ({ imageSrc, name, price, cartCopy, setCartCopy }) => {
       copy.push(product);
       setCartCopy(copy);
     }
+    if(action==="decrement"){
+      const copy=[...cartCopy];
+      const productIndex=copy.indexOf(product);
+      copy.splice(productIndex,1);
+      setCartCopy (copy);
+    }
   }
 
   return (
@@ -20,7 +26,9 @@ const CartItem = ({ imageSrc, name, price, cartCopy, setCartCopy }) => {
       </div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center border border-gray-300 rounded">
-          <button className="px-2 py-1 text-[#928E8E]">-</button>
+          <button onClick={() =>
+              handleCartitems("decrement", { imageSrc, name, price })
+            } className="px-2 py-1 text-[#928E8E]" disabled={cartCopy.filter(item=>item.name===name).length===1}>-</button>
           <span className="px-4 py-1">
             {cartCopy &&
               cartCopy.filter((item) => item.name === name).length}
@@ -32,7 +40,7 @@ const CartItem = ({ imageSrc, name, price, cartCopy, setCartCopy }) => {
             className="px-2 py-1 text-[#928E8E]"
           >
             +
-          </button>
+          </button >
         </div>
         <p className="text-lg font-semibold">{cartCopy && cartCopy.filter(item=>item.price===price).reduce((acc,curr)=>acc+curr.price,0)}</p>
       </div>

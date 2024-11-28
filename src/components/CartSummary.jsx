@@ -1,13 +1,13 @@
 import React from 'react';
 
 const CartSummary = ({ cartItems }) => {
-  // Calculate subtotal by summing prices of all items
+  
   const subtotal = cartItems.reduce((acc, curr) => acc + curr.price, 0);
   
-  // Fixed delivery fee
+  
   const deliveryFee = 450;
   
-  // Calculate total by adding subtotal and delivery fee
+  
   const total = subtotal + deliveryFee;
 
   return (
