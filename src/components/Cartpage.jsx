@@ -49,6 +49,7 @@ export default function Cartpage({ cart, setCart }) {
               cart={cart}
               setCartCopy={setCartCopy}
               cartCopy={cartCopy}
+              setCart={setCart}
             />
           ))}
         </div>

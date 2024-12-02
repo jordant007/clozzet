@@ -2,7 +2,7 @@ import React from 'react';
 
 const CartSummary = ({ cartItems }) => {
   
-  const subtotal = cartItems.reduce((acc, curr) => acc + curr.price, 0);
+  const subtotal = cartItems && cartItems.reduce((acc, curr) => acc + curr.price, 0);
   
   
   const deliveryFee = 450;
@@ -29,7 +29,7 @@ const CartSummary = ({ cartItems }) => {
       </div>
       <div className="text-sm mb-2 flex justify-between">
         <span>Subtotal</span>
-        <span>KSh {subtotal.toLocaleString()}</span>
+        <span>KSh {subtotal}</span>
       </div>
       <div className="text-sm mb-4 flex justify-between">
         <span>Delivery Fee</span>

@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom"
+import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { TfiAlignJustify } from "react-icons/tfi";
 
-export default function Nav({cart,setCart}){
+export default function Nav({cart, setCart}){
   
 return(
     <>
